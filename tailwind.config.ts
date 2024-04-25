@@ -3,6 +3,16 @@ import colors from 'tailwindcss/colors'
 
 export default <Partial<Config>>{
   theme: {
+    variables: {
+      '.bg-gradient-radial': {
+        'gradient-shape': {
+          DEFAULT: 'circle',
+        },
+        'gradient-position': {
+          DEFAULT: 'bottom',
+        },
+      },
+    },
     extend: {
       aspectRatio: {
         auto: 'auto',
@@ -10,11 +20,17 @@ export default <Partial<Config>>{
         video: '16 / 9'
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(circle at botom, var(--tw-gradient-stops))',
+        'gradient-radial': 'radial-gradient(var(--gradient-shape) at var(--gradient-position), var(--tw-gradient-stops))',
       },
       colors: {
-        primary: colors.blue,
+        secondary: {
+          ...colors.violet,
+          DEFAULT: colors.violet[500],
+        },
       },
     },
   },
+  plugins: [
+    require('@mertasan/tailwindcss-variables'),
+  ],
 }
