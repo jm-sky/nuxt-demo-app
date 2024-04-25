@@ -6,6 +6,12 @@
         "strings": true
     },
     "tailwindCSS.experimental.configFile": "tailwind.config.ts",
+    "tailwindCSS.classAttributes": [
+        "class",
+        "classes",
+        "className",
+        "ui"
+    ],
     "eslint.experimental.useFlatConfig": true
 }
   

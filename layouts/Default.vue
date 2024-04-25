@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="w-screen h-screen bg-primary-950 gradient-radial from-primary-900 to-black">
+  <div class="w-screen h-screen bg-primary-950 grad from-primary-900 to-black">
     <div class="flex flex-row justify-center gap-4 mb-4 bg-black text-sm p-2 shadow-lg shadow-primary-900">
       <UButton to="/" variant="outline">Home</UButton>
       <UButton to="/contact" variant="outline">Contact</UButton>
