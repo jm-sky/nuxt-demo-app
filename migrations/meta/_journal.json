@@ -8,6 +8,13 @@
       "when": 1714123243397,
       "tag": "0000_create_users_table",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714129544704,
+      "tag": "0001_add_is_admin_to_users_table",
+      "breakpoints": true
     }
   ]
 }

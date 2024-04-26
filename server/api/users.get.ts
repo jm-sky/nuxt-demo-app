@@ -1,5 +1,5 @@
-import { users } from '../../db/schema'
-import { db } from '../sqlite-service'
+import { users } from '@/db/schema'
+import { db } from '@/server/sqlite-service'
 
 export default defineEventHandler(async () => {
   try {

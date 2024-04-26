@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm'
-import type { InsertUser } from '../../../db/schema'
-import { users } from '../../../db/schema'
-import { db } from '../../sqlite-service'
+import type { InsertUser } from '@/db/schema'
+import { users } from '@/db/schema'
+import { db } from '@/server/sqlite-service'
 
 export default defineEventHandler(async (event) => {
   try {
