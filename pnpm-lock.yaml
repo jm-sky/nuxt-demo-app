@@ -20,6 +20,9 @@ importers:
       '@pinia/nuxt':
         specifier: ^0.5.1
         version: 0.5.1(rollup@4.16.4)(typescript@5.4.5)(vue@3.4.21(typescript@5.4.5))
+      '@types/lodash':
+        specifier: ^4.17.0
+        version: 4.17.0
       '@vueuse/core':
         specifier: ^10.9.0
         version: 10.9.0(vue@3.4.21(typescript@5.4.5))
@@ -1466,6 +1469,9 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/lodash@4.17.0':
+    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
 
   '@types/node@20.12.7':
     resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
@@ -6944,6 +6950,8 @@ snapshots:
       '@types/node': 20.12.7
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/lodash@4.17.0': {}
 
   '@types/node@20.12.7':
     dependencies:

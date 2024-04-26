@@ -5,5 +5,6 @@ export default withNuxt({
   // Your custom configs here
   rules: {
     '@typescript-eslint/no-extraneous-class': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 })
