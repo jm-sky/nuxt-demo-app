@@ -6,6 +6,7 @@ export default defineEventHandler(async () => {
     const usersResp = db.select().from(users).all()
     return { users: usersResp }
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   catch (e: any) {
     throw createError({
       statusCode: 400,

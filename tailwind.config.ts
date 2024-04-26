@@ -17,7 +17,7 @@ export default <Partial<Config>>{
       aspectRatio: {
         auto: 'auto',
         square: '1 / 1',
-        video: '16 / 9'
+        video: '16 / 9',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--gradient-shape) at var(--gradient-position), var(--tw-gradient-stops))',

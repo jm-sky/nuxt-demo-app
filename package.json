@@ -15,12 +15,17 @@
     "@nuxt/eslint": "^0.3.9",
     "@nuxt/ui": "^2.15.2",
     "@nuxtjs/i18n": "^8.3.1",
+    "@pinia/nuxt": "^0.5.1",
     "@vueuse/core": "^10.9.0",
+    "axios": "^1.6.8",
     "better-sqlite3": "^9.5.0",
     "drizzle-orm": "^0.29.5",
+    "lodash": "^4.17.21",
     "nuxt": "^3.11.2",
+    "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue-toast-notification": "^3.1.2"
   },
   "devDependencies": {
     "@mertasan/tailwindcss-variables": "^2.7.0",
