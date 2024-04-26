@@ -4,6 +4,13 @@ import { users } from '@/db/schema'
 import { db } from '@/server/sqlite-service'
 import { UserView } from '@/server/models/userView.model'
 
+const deny = () => {
+  throw createError({
+    statusCode: 401,
+    statusMessage: 'Unauthorized',
+  })
+}
+
 // DRAFT
 export default defineEventHandler(async (event) => {
   try {
@@ -17,14 +24,14 @@ export default defineEventHandler(async (event) => {
       .get()
 
     if (!usersResp) {
-      return {}
+      return deny()
     }
 
     // TODO: Check
-    const isMatch = await bcrypt.compare(body.password, users.password)
+    const isMatch = await bcrypt.compare(body.password, usersResp.password)
 
     if (!isMatch) {
-      return {}
+      return deny()
     }
 
     return { user: new UserView(usersResp) }

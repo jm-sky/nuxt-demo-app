@@ -110,10 +110,17 @@ export function useForm<TFormData extends TFormDataBase>(initialData: TFormData)
       this.processing = true
       options?.onStart?.()
 
-      return axiosInstance<TResponse>({
+      // TODO: Fix
+      return $fetch<TResponse>(url, {
         method,
-        url,
-        data: payload,
+        body: payload,
+        onResponse: () => {
+          this.clearErrors()
+          this.recentlySuccessful = true
+          recentlySuccessfulTimeoutId = setTimeout(() => (this.recentlySuccessful = false), RECENTLY_SUCCESSFUL_TIMEOUT)
+          this.isDirty = false
+          options?.onSuccess?.()
+        },
       })
         .catch((error: Error | AxiosError) => {
           form.hasErrors = true
@@ -132,14 +139,6 @@ export function useForm<TFormData extends TFormDataBase>(initialData: TFormData)
           }
 
           throw error
-        })
-        .then((response: AxiosResponse) => {
-          this.clearErrors()
-          this.recentlySuccessful = true
-          recentlySuccessfulTimeoutId = setTimeout(() => (this.recentlySuccessful = false), RECENTLY_SUCCESSFUL_TIMEOUT)
-          this.isDirty = false
-          options?.onSuccess?.()
-          return response.data
         })
         .finally(() => {
           this.processing = false
