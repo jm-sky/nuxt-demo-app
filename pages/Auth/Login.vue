@@ -23,8 +23,8 @@ defineProps<{
 }>()
 
 const form = useForm({
-  email: '',
-  password: '',
+  email: 'user@example.com',
+  password: 'Secret123!',
   remember: false,
   errors: {},
 })
@@ -116,6 +116,7 @@ const submit = () => {
         </RouterLink>
 
         <UButton
+          type="submit"
           class="ms-4"
           :disabled="form.processing"
         >

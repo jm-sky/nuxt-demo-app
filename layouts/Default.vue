@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import ApplicationLogo from '@/components/ApplicationLogo.vue'
-import Dropdown from '@/components/Menu/MenuDropdown.vue'
-import DropdownLink from '@/components/Menu/MenuDropdownLink.vue'
+import MenuDropdown from '@/components/Menu/MenuDropdown.vue'
+import MenuDropdownLink from '@/components/Menu/MenuDropdownLink.vue'
 import NavLink from '@/components/Nav/NavLink.vue'
 import ResponsiveNavLink from '@/components/Nav/ResponsiveNavLink.vue'
 import { RouteMap } from '@/router/routeMap'
@@ -56,7 +56,10 @@ const showingNavigationDropdown = ref(false)
 
               <!-- Settings Dropdown -->
               <div class="ms-3 relative">
-                <Dropdown align="right" width="48">
+                <MenuDropdown
+                  align="right"
+                  width="48"
+                >
                   <template #trigger>
                     <span class="inline-flex rounded-md">
                       <button
@@ -65,36 +68,28 @@ const showingNavigationDropdown = ref(false)
                       >
                         {{ useAuthStore().user?.name }}
 
-                        <FaIcon icon="user" />
-                        <svg
-                          class="ms-2 -me-0.5 h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
+                        <FaIcon
+                          icon="user"
+                          class="mx-1.5"
+                        />
+                        <FaIcon icon="angle-down" />
                       </button>
                     </span>
                   </template>
 
                   <template #content>
-                    <DropdownLink :to="RouteMap.PROFILE_EDIT">
+                    <MenuDropdownLink :to="RouteMap.PROFILE_EDIT">
                       Profile
-                    </DropdownLink>
-                    <DropdownLink
+                    </MenuDropdownLink>
+                    <MenuDropdownLink
                       :to="RouteMap.LOGOUT"
                       method="post"
                       as="button"
                     >
                       Log Out
-                    </DropdownLink>
+                    </MenuDropdownLink>
                   </template>
-                </Dropdown>
+                </MenuDropdown>
               </div>
             </div>
 

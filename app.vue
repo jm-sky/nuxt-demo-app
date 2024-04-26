@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import '@fortawesome/fontawesome-free/css/all.css'
+import 'vue-toastification/dist/index.css'
 
 const config = useRuntimeConfig()
 

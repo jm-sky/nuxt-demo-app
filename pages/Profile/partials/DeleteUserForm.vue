@@ -52,8 +52,8 @@ const closeModal = () => {
       Delete Account
     </UButton>
 
-    <Modal
-      :show="confirmingUserDeletion"
+    <UModal
+      v-model="confirmingUserDeletion"
       @close="closeModal"
     >
       <div class="p-6">
@@ -105,6 +105,6 @@ const closeModal = () => {
           </UButton>
         </div>
       </div>
-    </Modal>
+    </UModal>
   </section>
 </template>

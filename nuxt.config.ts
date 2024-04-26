@@ -9,9 +9,11 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
     'nuxt-icon',
+    // '@/plugins/toastification',
   ],
   tailwindcss: {
     configPath: 'tailwind.config',
+    viewer: false,
   },
   eslint: {
     config: {

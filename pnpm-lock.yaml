@@ -59,6 +59,9 @@ importers:
       vue-toast-notification:
         specifier: ^3.1.2
         version: 3.1.2(vue@3.4.25(typescript@5.4.5))
+      vue-toastification:
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(vue@3.4.25(typescript@5.4.5))
     devDependencies:
       '@mertasan/tailwindcss-variables':
         specifier: ^2.7.0
@@ -5199,6 +5202,11 @@ packages:
     engines: {node: '>=12.15.0'}
     peerDependencies:
       vue: ^3.0
+
+  vue-toastification@2.0.0-rc.5:
+    resolution: {integrity: sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==}
+    peerDependencies:
+      vue: ^3.0.2
 
   vue-virtual-scroller@2.0.0-beta.8:
     resolution: {integrity: sha512-b8/f5NQ5nIEBRTNi6GcPItE4s7kxNHw2AIHLtDp+2QvqdTjVN0FgONwX9cr53jWRgnu+HRLPaWDOR2JPI5MTfQ==}
@@ -11231,6 +11239,10 @@ snapshots:
       vue: 3.4.25(typescript@5.4.5)
 
   vue-toast-notification@3.1.2(vue@3.4.25(typescript@5.4.5)):
+    dependencies:
+      vue: 3.4.25(typescript@5.4.5)
+
+  vue-toastification@2.0.0-rc.5(vue@3.4.25(typescript@5.4.5)):
     dependencies:
       vue: 3.4.25(typescript@5.4.5)
 

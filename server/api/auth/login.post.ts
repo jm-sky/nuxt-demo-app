@@ -14,13 +14,12 @@ const deny = () => {
 // DRAFT
 export default defineEventHandler(async (event) => {
   try {
-    const userId = event.context.params?.id as string
     const body = await readBody(event)
 
     const usersResp = db
       .select()
       .from(users)
-      .where(eq(users.id, parseInt(userId)))
+      .where(eq(users.email, body.email))
       .get()
 
     if (!usersResp) {

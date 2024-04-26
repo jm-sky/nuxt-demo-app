@@ -13,9 +13,9 @@ export const RouteMap = {
   VERIFICATION_SEND: '/verification-send',
 
   API: {
-    LOGIN: '/api/login',
-    LOGOUT: '/api/logout',
-    REGISTER: '/api/register',
+    LOGIN: '/api/auth/login',
+    LOGOUT: '/api/auth/logout',
+    REGISTER: '/api/auth/register',
     PROFILE_UPDATE: '/api/profile',
     VERIFICATION_SEND: '/api/email/verification-notification',
     PASSWORD_UPDATE: '/api/reset-password',

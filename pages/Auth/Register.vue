@@ -14,10 +14,10 @@ definePageMeta({
 const router = useRouter()
 
 const form = useForm({
-  name: '',
-  email: '',
-  password: '',
-  password_confirmation: '',
+  name: 'John',
+  email: 'user@example.com',
+  password: 'Secret123!',
+  passwordConfirmation: 'Secret123!',
 })
 
 const submit = async () => {
@@ -99,23 +99,23 @@ const submit = async () => {
 
       <div class="mt-4">
         <InputLabel
-          for="password_confirmation"
+          for="passwordConfirmation"
           value="Confirm Password"
         />
 
         <UInput
-          id="password_confirmation"
-          v-model="form.password_confirmation"
+          id="passwordConfirmation"
+          v-model="form.passwordConfirmation"
           type="password"
           class="mt-1 block w-full"
-          :error="form.errors.password_confirmation"
+          :error="form.errors.passwordConfirmation"
           required
           autocomplete="new-password"
         />
 
         <InputError
           class="mt-2"
-          :message="form.errors.password_confirmation"
+          :message="form.errors.passwordConfirmation"
         />
       </div>
 
@@ -128,6 +128,7 @@ const submit = async () => {
         </RouterLink>
 
         <UButton
+          type="submit"
           class="ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"

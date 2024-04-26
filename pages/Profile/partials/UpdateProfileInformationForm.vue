@@ -6,19 +6,23 @@ import { RouteMap } from '@/router/routeMap'
 import { useAuthStore } from '@/stores'
 import type { User } from '@/types/user.type'
 
+useHead({
+  title: 'Profile',
+})
+
 defineProps<{
   mustVerifyEmail?: boolean
   status?: string
 }>()
 
-const user = useAuthStore().user as User
+const user = useAuthStore().user as User | undefined
 
-const form = useForm({
-  name: user.name,
-  email: user.email,
+const formData = useForm({
+  name: user?.name ?? '',
+  email: user?.email ?? '',
 })
 
-const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
+const submit = () => formData.patch(RouteMap.API.PROFILE_UPDATE)
 </script>
 
 <template>
@@ -44,7 +48,7 @@ const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
         />
         <UInput
           id="name"
-          v-model="form.name"
+          v-model="formData.name"
           type="text"
           class="mt-1 block w-full"
           required
@@ -53,7 +57,7 @@ const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
         />
         <InputError
           class="mt-2"
-          :message="form.errors.name"
+          :message="formData.errors.name"
         />
       </div>
 
@@ -64,7 +68,7 @@ const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
         />
         <UInput
           id="email"
-          v-model="form.email"
+          v-model="formData.email"
           type="email"
           class="mt-1 block w-full"
           required
@@ -72,11 +76,11 @@ const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
         />
         <InputError
           class="mt-2"
-          :message="form.errors.email"
+          :message="formData.errors.email"
         />
       </div>
 
-      <div v-if="mustVerifyEmail && !user.emailVerifiedAt">
+      <div v-if="mustVerifyEmail && !user?.emailVerifiedAt">
         <p class="text-sm mt-2 text-gray-800">
           Your email address is unverified.
           <RouterLink
@@ -99,8 +103,8 @@ const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
 
       <div class="flex items-center gap-4">
         <UButton
-          :disabled="form.processing"
-          :loading="form.processing"
+          :disabled="formData.processing"
+          :loading="formData.processing"
         >
           Save
         </UButton>
@@ -112,7 +116,7 @@ const submit = () => form.patch(RouteMap.API.PROFILE_UPDATE)
           leave-to-class="opacity-0"
         >
           <p
-            v-if="form.recentlySuccessful"
+            v-if="formData.recentlySuccessful"
             class="text-sm text-gray-600"
           >
             Saved.
