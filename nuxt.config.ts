@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/ui',
     '@nuxtjs/i18n',
+    'nuxt-icon',
   ],
   tailwindcss: {
     configPath: 'tailwind.config',

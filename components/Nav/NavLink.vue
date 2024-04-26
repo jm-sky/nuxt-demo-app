@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
 
 const props = defineProps<{
   to: string
@@ -15,10 +14,17 @@ const classes = computed(() =>
 </script>
 
 <template>
-  <RouterLink
+  <NuxtLink
     :to="to"
     :class="classes"
+    class="nav-link"
   >
     <slot />
-  </RouterLink>
+  </NuxtLink>
 </template>
+
+<style>
+.nav-link.router-link-active {
+  @apply text-primary relative  border-b-2 border-primary;
+}
+</style>

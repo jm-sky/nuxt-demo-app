@@ -4,10 +4,12 @@
 Generate migration files
 > npm exec drizzle-kit generate:sqlite --out migrations --schema db/schema.ts
 
+This will generate migration in `\migrations` folder
+
 Push migration to database
 > npm exec drizzle-kit push:sqlite
 
-This will generate migration in `\drizzle` folder
+This will commit changes to `\sqlite.db` file
 
 Open Drizzle Studio
 > npm exec drizzle-kit studio

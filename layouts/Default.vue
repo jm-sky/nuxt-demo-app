@@ -56,10 +56,7 @@ const showingNavigationDropdown = ref(false)
 
               <!-- Settings Dropdown -->
               <div class="ms-3 relative">
-                <Dropdown
-                  align="right"
-                  width="48"
-                >
+                <Dropdown align="right" width="48">
                   <template #trigger>
                     <span class="inline-flex rounded-md">
                       <button
@@ -68,6 +65,7 @@ const showingNavigationDropdown = ref(false)
                       >
                         {{ useAuthStore().user?.name }}
 
+                        <FaIcon icon="user" />
                         <svg
                           class="ms-2 -me-0.5 h-4 w-4"
                           xmlns="http://www.w3.org/2000/svg"
