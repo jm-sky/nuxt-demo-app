@@ -4,6 +4,12 @@ useHead({
 })
 
 const { data } = await useFetch('/api/users')
+
+const users = useFetch('/api/users')
+const finished = await useFetch('/api/users')
+
+console.log('[dashboard] users:', users)
+console.log('[dashboard] finished:', finished)
 </script>
 
 <template>
