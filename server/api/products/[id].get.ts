@@ -1,19 +1,19 @@
 import { eq } from 'drizzle-orm'
-import { users } from '@/db/schema'
+import { products } from '@/db/schema'
 import { db } from '@/server/sqlite-service'
 
 export default defineEventHandler(async (event) => {
   try {
     // get id as function parameter from route params
-    const userId = event.context.params?.id as string
+    const productId = event.context.params?.id as string
 
-    const user = db
+    const product = db
       .select()
-      .from(users)
-      .where(eq(users.id, parseInt(userId)))
+      .from(products)
+      .where(eq(products.id, parseInt(productId)))
       .get()
 
-    return { user }
+    return { product }
   }
 
   catch (e: any) {

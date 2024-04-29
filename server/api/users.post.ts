@@ -14,9 +14,9 @@ export default defineEventHandler(async (event) => {
       isAdmin: false,
     }
 
-    const result = db.insert(users).values(newUser).run()
+    const user = db.insert(users).values(newUser).run()
 
-    return { newUser: result }
+    return { user }
   }
   catch (e: any) {
     throw createError({

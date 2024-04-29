@@ -10,12 +10,14 @@ export default defineEventHandler(async (event) => {
     const editUser: InsertUser = {
       ...body,
     }
-    const usersResp = db
+
+    const user = db
       .update(users)
       .set(editUser)
       .where(eq(users.id, parseInt(userId)))
       .run()
-    return { user: usersResp }
+
+    return { user }
   }
   catch (e: any) {
     throw createError({
