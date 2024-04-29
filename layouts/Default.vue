@@ -2,14 +2,24 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import ApplicationLogo from '@/components/ApplicationLogo.vue'
-import MenuDropdown from '@/components/Menu/MenuDropdown.vue'
-import MenuDropdownLink from '@/components/Menu/MenuDropdownLink.vue'
 import NavLink from '@/components/Nav/NavLink.vue'
 import ResponsiveNavLink from '@/components/Nav/ResponsiveNavLink.vue'
 import { RouteMap } from '@/router/routeMap'
 import { useAuthStore } from '@/stores'
+import MenuDropdown from '~/components/Menu/MenuDropdown.vue'
 
 const showingNavigationDropdown = ref(false)
+
+const userMenuOptions = [
+  [{
+    label: 'Profile',
+    to: RouteMap.PROFILE_EDIT,
+  }],
+  [{
+    label: 'Logout',
+    to: RouteMap.LOGOUT,
+  }],
+]
 </script>
 
 <template>
@@ -56,39 +66,12 @@ const showingNavigationDropdown = ref(false)
 
               <!-- Settings Dropdown -->
               <div class="ms-3 relative">
-                <MenuDropdown
-                  align="right"
-                  width="48"
-                >
-                  <template #trigger>
-                    <span class="inline-flex rounded-md">
-                      <button
-                        type="button"
-                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                      >
-                        {{ useAuthStore().user?.name }}
-
-                        <FaIcon
-                          icon="user"
-                          class="mx-1.5"
-                        />
-                        <FaIcon icon="angle-down" />
-                      </button>
-                    </span>
-                  </template>
-
-                  <template #content>
-                    <MenuDropdownLink :to="RouteMap.PROFILE_EDIT">
-                      Profile
-                    </MenuDropdownLink>
-                    <MenuDropdownLink
-                      :to="RouteMap.LOGOUT"
-                      method="post"
-                      as="button"
-                    >
-                      Log Out
-                    </MenuDropdownLink>
-                  </template>
+                <MenuDropdown :items="userMenuOptions">
+                  {{ useAuthStore().user?.name }}
+                  <FaIcon
+                    icon="user"
+                    class="mx-1.5"
+                  />
                 </MenuDropdown>
               </div>
             </div>
