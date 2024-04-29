@@ -11,7 +11,7 @@ definePageMeta({
 const authStore = useAuthStore()
 const router = useRouter()
 
-onMounted(() => authStore.logout().finally(() => router.push(RouteMap.LOGIN)))
+onMounted(async () => authStore.logout().finally(() => router.push(RouteMap.LOGIN)))
 </script>
 
 <template>

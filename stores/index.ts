@@ -16,4 +16,4 @@ const pinia = createPinia()
 
 export default pinia
 
-export * from '@/stores/modules/auth.store'
+export * from './modules/authStore'
