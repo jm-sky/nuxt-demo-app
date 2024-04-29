@@ -32,6 +32,7 @@ const form = useForm({
 const submit = () => {
   form.post(RouteMap.API.LOGIN, {
     onSuccess: async () => {
+      authStore.userId = form.email
       form.reset()
       await authStore.loadUserData()
       router.push(RouteMap.HOME)
@@ -118,20 +119,21 @@ const submit = () => {
         <UButton
           type="submit"
           class="ms-4"
+          :loading="form.processing"
           :disabled="form.processing"
         >
           Log in
         </UButton>
       </div>
 
-      <div class="mt-6 text-center text-sm">
+      <div class="mt-6 text-center text-sm dark:text-gray-500">
         Don't have account?
-        <RouterLink
+        <NuxtLink
           :to="RouteMap.REGISTER"
-          class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         >
           Register
-        </RouterLink>
+        </NuxtLink>
       </div>
     </form>
   </NuxtLayout>

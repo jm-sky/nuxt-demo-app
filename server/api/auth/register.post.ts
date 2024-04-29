@@ -18,7 +18,8 @@ export default defineEventHandler(async (event) => {
     }
 
     const result = db.insert(users).values(newUser).run()
-    return { newUser: result }
+
+    return { user: result }
   }
   catch (e: any) {
     throw createError({

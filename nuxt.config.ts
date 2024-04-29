@@ -9,8 +9,12 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
     'nuxt-icon',
+    // '@sidebase/nuxt-auth',
     // '@/plugins/toastification',
   ],
+  // auth: {
+  //   globalAppMiddleware: false,
+  // },
   tailwindcss: {
     configPath: 'tailwind.config',
     viewer: false,

@@ -14,8 +14,8 @@ const showingNavigationDropdown = ref(false)
 
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100">
-      <nav class="bg-white border-b border-gray-100">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+      <nav class="bg-white border-b border-gray-100 dark:bg-gray-950 dark:border-gray-900">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between h-16">
@@ -25,7 +25,7 @@ const showingNavigationDropdown = ref(false)
                 <RouterLink :to="RouteMap.HOME">
                   <ApplicationLogo
                     size="w-10 h-10"
-                    class="block h-3 w-auto fill-current text-gray-800"
+                    class="block h-3 w-auto fill-current text-gray-800 dark:text-gray-300"
                   />
                 </RouterLink>
               </div>
