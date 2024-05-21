@@ -17,14 +17,16 @@ const next = computed(() => {
 </script>
 
 <template>
-  <UButton
-    variant="ghost"
-    color="slate"
-    @click="$colorMode.preference = next"
-  >
-    <FaIcon
-      :icon
-      fw
-    />
-  </UButton>
+  <ColorScheme tag="span">
+    <UButton
+      variant="ghost"
+      color="slate"
+      @click="$colorMode.preference = next"
+    >
+      <FaIcon
+        :icon
+        fw
+      />
+    </UButton>
+  </ColorScheme>
 </template>

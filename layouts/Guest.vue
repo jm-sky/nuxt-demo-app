@@ -6,10 +6,14 @@ import { RouteMap } from '@/router/routeMap'
 
 <template>
   <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-    <div>
+    <div class="mb-2">
       <RouterLink :to="RouteMap.HOME">
-        <ApplicationLogo class="w-32 h-20 text-lg fill-current text-gray-500 dark:text-gray-600" />
+        <ApplicationLogo class="w-32 h-20 text-lg fill-gray-500 dark:text-gray-600 hover:fill-primary dark:hover:fill-primary-700 transition" />
       </RouterLink>
+    </div>
+
+    <div class="absolute top-2 right-2 flex flex-row gap-2 items-center">
+      <ColorModeButton />
     </div>
 
     <div
