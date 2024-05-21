@@ -42,5 +42,5 @@ const typeComp = computed(() => {
 </script>
 
 <template>
-  <i :class="[typeComp, iconComp, fixedWidthComp, { 'mr-2': mr }, { 'ml-2': ml }]" />
+  <i :class="[typeComp, iconComp, fixedWidthComp, { 'mr-1.5': mr }, { 'ml-1.5': ml }]" />
 </template>
