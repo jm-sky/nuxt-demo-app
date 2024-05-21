@@ -13,7 +13,7 @@ const onSubmit = () => {
 
 <template>
   <form
-    class="border rounded p-4 flex flex-col gap-2 my-4 w-1/2 mx-auto"
+    class="border rounded p-4 flex flex-col gap-2 my-4 w-1/2 mx-auto dark:border-slate-700"
     @submit.prevent="onSubmit"
   >
     <div class="font-bold">

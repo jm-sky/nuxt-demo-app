@@ -16,7 +16,7 @@ export class UserView {
     this.firstName = payload.firstName
     this.lastName = payload.lastName
     this.email = payload.email
-    this.isAdmin = payload.isAdmin ?? false
+    this.isAdmin = payload.isAdmin ? true : false
     this.createdAt = payload.createdAt ? dayjs(payload.createdAt).toDate() : null
   }
 

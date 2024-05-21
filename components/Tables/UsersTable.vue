@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { UserView } from '~/models/userView.model'
+import type { UserView } from '~/models/userView.model'
 
 defineProps<{
   users: UserView[]
-}>();
+}>()
 </script>
 
 <template>
-  <div class="border rounded flex flex-col">
-    <div class="grid grid-cols-4 gap-2 font-bold border-b bg-slate-50">
+  <div class="border rounded flex flex-col dark:border-slate-700">
+    <div class="grid grid-cols-4 rounded-t gap-2 font-bold border-b bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
       <div class="p-2">
         First name
       </div>

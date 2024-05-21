@@ -57,12 +57,7 @@ const userMenuOptions = [
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-              <ColorScheme>
-                <USelect
-                  v-model="$colorMode.preference"
-                  :options="['System', 'Light', 'Dark']"
-                />
-              </ColorScheme>
+              <ColorModeButton />
 
               <!-- Settings Dropdown -->
               <div class="ms-3 relative">
