@@ -1,6 +1,7 @@
+import dayjs from 'dayjs'
 import type { User } from '@/db/schema'
 
-export type IUserView = User;
+export type IUserView = User
 
 export class UserView {
   id: number | string
@@ -8,18 +9,18 @@ export class UserView {
   lastName: string
   email: string
   isAdmin: boolean
-  createdAt?: Date
+  createdAt?: Date | null
 
   constructor(payload: IUserView) {
     this.id = payload.id
     this.firstName = payload.firstName
     this.lastName = payload.lastName
     this.email = payload.email
-    this.email = payload.email
-    this.createdAt = payload.createdAt ?? false
+    this.isAdmin = payload.isAdmin ?? false
+    this.createdAt = payload.createdAt ? dayjs(payload.createdAt).toDate() : null
   }
 
   get fullName(): string {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName} ${this.lastName}`
   }
 }

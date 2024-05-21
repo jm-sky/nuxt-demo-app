@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { IUserView, UserView } from '~/models/userView.model'
-import UsersCards from '@/components/Cards/UsersCards'
+import type { IUserView } from '~/models/userView.model'
+import { UserView } from '~/models/userView.model'
+import UsersCards from '~/components/Cards/UsersCards.vue'
 
 const { data, error } = await useAsyncData(
   'users',
   () => $fetch<{ users: IUserView[] }>('/api/users'),
 )
 
-const users = computed<UserView[]>(() => data.value?.users.map(user => new UserView(user)));
+const users = computed<UserView[] | undefined>(() => data.value?.users.map(user => new UserView(user)))
 
 useHead({
   title: 'Dashboard',
@@ -32,8 +33,10 @@ useHead({
             :description="error?.message"
           />
 
-          <UsersCards :users />
-
+          <UsersCards
+            v-if="users"
+            :users
+          />
         </div>
       </div>
     </div>
