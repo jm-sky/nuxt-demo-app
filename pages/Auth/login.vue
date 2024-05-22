@@ -99,12 +99,12 @@ const submit = async () => {
             v-model:checked="form.remember"
             name="remember"
           />
-          <span class="ms-2 text-sm text-gray-600">Remember me</span>
+          <span class="ms-2 text-sm text-gray-600 dark:text-gray-300">Remember me</span>
         </label>
 
         <RouterLink
           :to="RouteMap.PASSWORD_FORGOT"
-          class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          class="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         >
           Forgot your password?
         </RouterLink>
@@ -121,11 +121,11 @@ const submit = async () => {
         </UButton>
       </div>
 
-      <div class="mt-6 text-center text-sm dark:text-gray-500">
+      <div class="mt-6 text-center text-sm dark:text-gray-300">
         Don't have account?
         <NuxtLink
           :to="RouteMap.REGISTER"
-          class="text-sm font-semibold text-primary-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          class="text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-gray-900 dark:hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         >
           Register
         </NuxtLink>
