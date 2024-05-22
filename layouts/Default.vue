@@ -8,6 +8,8 @@ import { RouteMap } from '@/router/routeMap'
 import { useAuthStore } from '@/stores'
 import MenuDropdown from '~/components/Menu/MenuDropdown.vue'
 
+const authStore = useAuthStore()
+
 const showingNavigationDropdown = ref(false)
 
 const userMenuOptions = [
@@ -61,11 +63,13 @@ const userMenuOptions = [
 
               <!-- Settings Dropdown -->
               <div class="ms-3 relative">
-                <MenuDropdown :items="userMenuOptions">
-                  {{ useAuthStore().user?.name }}
+                <MenuDropdown
+                  :items="userMenuOptions"
+                >
+                  {{ authStore.user?.fullName }}
                   <FaIcon
                     icon="user"
-                    class="mx-1.5"
+                    class="mx-2"
                   />
                 </MenuDropdown>
               </div>
@@ -124,7 +128,7 @@ const userMenuOptions = [
           <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
               <div class="font-medium text-base text-gray-800">
-                {{ useAuthStore().user?.name }}
+                {{ authStore.user?.fullName }}
               </div>
               <div class="font-medium text-sm text-gray-500">
                 {{ useAuthStore().user?.email }}

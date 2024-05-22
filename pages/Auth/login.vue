@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router'
-import { useToast } from 'vue-toast-notification'
+import { useToast } from 'vue-toastification'
 import { RouteMap } from '@/router/routeMap'
 import { useForm } from '@/helpers/useForm'
 import { useAuthStore } from '@/stores'
+import type { TSessionData } from '~/server/sessionStore'
 
 useHead({
   title: 'Login',
@@ -16,11 +17,7 @@ definePageMeta({
 const toast = useToast()
 const authStore = useAuthStore()
 const router = useRouter()
-
-defineProps<{
-  canResetPassword?: boolean
-  status?: string
-}>()
+const { user } = storeToRefs(authStore)
 
 const form = useForm({
   email: 'user@example.com',
@@ -29,12 +26,11 @@ const form = useForm({
   errors: {},
 })
 
-const submit = () => {
-  form.post(RouteMap.API.LOGIN, {
-    onSuccess: async () => {
-      authStore.userId = form.email
+const submit = async () => {
+  form.post<{ session: TSessionData }>(RouteMap.API.LOGIN, {
+    onSuccess: async (response) => {
       form.reset()
-      await authStore.loadUserData()
+      authStore.session = response.session
       router.push(RouteMap.HOME)
     },
     onError: () => toast.error('Could not login'),
@@ -45,10 +41,10 @@ const submit = () => {
 <template>
   <NuxtLayout>
     <div
-      v-if="status"
-      class="mb-4 font-medium text-sm text-green-600"
+      v-if="user"
+      class="text-xl font-bold p-4"
     >
-      {{ status }}
+      Hello {{ user?.fullName }}
     </div>
 
     <form @submit.prevent="submit">
@@ -97,7 +93,7 @@ const submit = () => {
         />
       </div>
 
-      <div class="block mt-4">
+      <div class="flex flex-row justify-between gap-2 mt-4">
         <label class="flex items-center">
           <UCheckbox
             v-model:checked="form.remember"
@@ -105,22 +101,21 @@ const submit = () => {
           />
           <span class="ms-2 text-sm text-gray-600">Remember me</span>
         </label>
-      </div>
 
-      <div class="flex items-center justify-end mt-4">
         <RouterLink
-          v-if="canResetPassword"
           :to="RouteMap.PASSWORD_FORGOT"
-          class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         >
           Forgot your password?
         </RouterLink>
+      </div>
 
+      <div class="flex items-center justify-center mt-6">
         <UButton
           type="submit"
-          class="ms-4"
           :loading="form.processing"
           :disabled="form.processing"
+          class="px-6"
         >
           Log in
         </UButton>

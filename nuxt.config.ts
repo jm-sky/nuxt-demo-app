@@ -2,6 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   devtools: { enabled: true },
   modules: [
     '@nuxt/eslint',
@@ -10,12 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
     'nuxt-icon',
-    // '@sidebase/nuxt-auth',
-    // '@/plugins/toastification',
   ],
-  // auth: {
-  //   globalAppMiddleware: false,
-  // },
   tailwindcss: {
     configPath: 'tailwind.config',
     viewer: false,
@@ -30,14 +26,4 @@ export default defineNuxtConfig({
       appName: 'My App', // NUXT_APP_NAME
     },
   },
-  // colorMode: {
-  //   preference: 'system', // default value of $colorMode.preference
-  //   fallback: 'light', // fallback value if not system preference found
-  //   hid: 'nuxt-color-mode-script',
-  //   globalName: '__NUXT_COLOR_MODE__',
-  //   componentName: 'ColorScheme',
-  //   classPrefix: '',
-  //   classSuffix: '-mode',
-  //   storageKey: 'nuxt-color-mode'
-  // }
 })

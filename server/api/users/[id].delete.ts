@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
       .delete(users)
       .where(eq(users.id, parseInt(userId)))
       .run()
+
     return { user: usersResp }
   }
   catch (e: any) {

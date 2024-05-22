@@ -4,10 +4,10 @@ import { reactive, watch } from 'vue'
 import type { AxiosError, AxiosResponse } from '@/helpers/axiosInstance'
 import axiosInstance, { HttpStatusCode, isAxiosError } from '@/helpers/axiosInstance'
 
-interface IFormSubmitOptions {
+interface IFormSubmitOptions<TResponse = any> {
   onStart?: () => any
   onError?: (errors: any) => any
-  onSuccess?: () => any
+  onSuccess?: (response: TResponse) => any
   onFinish?: () => any
 }
 
@@ -26,11 +26,11 @@ interface IFormWrapperProps<TFormData extends TFormDataBase> {
   transform: (callback: TTransformCallback<TFormData>) => IFormWrapperProps<TFormData>
   reset: (...fields: (keyof TFormData)[]) => IFormWrapperProps<TFormData>
   clearErrors: (...fields: (keyof TFormData)[]) => IFormWrapperProps<TFormData>
-  submit: <TResponse = any>(method: TFormSubmitMethod, url: string, options?: IFormSubmitOptions) => Promise<TResponse>
-  post: <TResponse = any>(url: string, options?: IFormSubmitOptions) => Promise<TResponse>
-  put: <TResponse = any>(url: string, options?: IFormSubmitOptions) => Promise<TResponse>
-  patch: <TResponse = any>(url: string, options?: IFormSubmitOptions) => Promise<TResponse>
-  delete: <TResponse = any>(url: string, options?: IFormSubmitOptions) => Promise<TResponse>
+  submit: <TResponse = any>(method: TFormSubmitMethod, url: string, options?: IFormSubmitOptions<TResponse>) => Promise<TResponse>
+  post: <TResponse = any>(url: string, options?: IFormSubmitOptions<TResponse>) => Promise<TResponse>
+  put: <TResponse = any>(url: string, options?: IFormSubmitOptions<TResponse>) => Promise<TResponse>
+  patch: <TResponse = any>(url: string, options?: IFormSubmitOptions<TResponse>) => Promise<TResponse>
+  delete: <TResponse = any>(url: string, options?: IFormSubmitOptions<TResponse>) => Promise<TResponse>
 }
 
 const RECENTLY_SUCCESSFUL_TIMEOUT = 2000
@@ -101,7 +101,7 @@ export function useForm<TFormData extends TFormDataBase>(initialData: TFormData)
     async submit<TResponse = any>(
       method: TFormSubmitMethod,
       url: string,
-      options?: IFormSubmitOptions,
+      options?: IFormSubmitOptions<TResponse>,
     ): Promise<TResponse> {
       const payload = transform(this.data())
 
@@ -138,7 +138,7 @@ export function useForm<TFormData extends TFormDataBase>(initialData: TFormData)
           this.recentlySuccessful = true
           recentlySuccessfulTimeoutId = setTimeout(() => (this.recentlySuccessful = false), RECENTLY_SUCCESSFUL_TIMEOUT)
           this.isDirty = false
-          options?.onSuccess?.()
+          options?.onSuccess?.(response.data)
           return response.data
         })
         .finally(() => {

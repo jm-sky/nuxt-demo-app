@@ -4,14 +4,15 @@ import InputError from '@/components/Input/InputError.vue'
 import InputLabel from '@/components/Input/InputLabel.vue'
 import { useForm } from '@/helpers/useForm'
 import { RouteMap } from '@/router/routeMap'
-import type { User } from '@/types/user.type'
 import { useAuthStore } from '@/stores'
+import type { TSessionData } from '~/server/sessionStore'
 
 definePageMeta({
   layout: 'guest',
 })
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const form = useForm({
   firstName: 'John',
@@ -23,8 +24,8 @@ const form = useForm({
 
 const submit = async () => {
   try {
-    const user = await form.post<User>(RouteMap.API.REGISTER)
-    useAuthStore().user = user
+    const { session } = await form.post<{ session: TSessionData }>(RouteMap.API.REGISTER)
+    authStore.session = session
     router.push(RouteMap.HOME)
   }
   catch (error: unknown) {
@@ -99,7 +100,7 @@ const submit = async () => {
             class="mt-1 block w-full"
             :input-class="form.errors.email ? 'ring-1 ring-red-500' : ''"
             required
-            autocomplete="username"
+            autocomplete="email"
           />
 
           <InputError
